@@ -44,3 +44,5 @@ export function memoizeWithStaleWhileRevalidate<T extends any[], R>(
     return cache.get(key) as R;
   };
 }
+
+export default memoizeWithStaleWhileRevalidate;
