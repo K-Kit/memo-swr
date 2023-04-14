@@ -42,5 +42,8 @@
       "path": "dist/memo-swr.esm.js",
       "limit": "10 KB"
     }
-  ]
+  ],
+  "devDependencies": {
+    "tsdx": "^0.14.1"
+  }
 }

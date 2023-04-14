@@ -1,23 +1,23 @@
 type AsyncFunction<T extends any[], R> = (...args: T) => Promise<R>;
 
-function memoizeWithStaleWhileRevalidate<T extends any[], R>(
+export function memoizeWithStaleWhileRevalidate<T extends any[], R>(
   fn: AsyncFunction<T, R>,
   ttl: number
 ): AsyncFunction<T, R> {
   const cache = new Map<string, R>();
-  const timers = new Map<string, number>();
+  const timers = new Map<string, any>();
 
   function refetch(key: string, ...args: T): void {
-    clearTimeout(timers.get(key) as number);
+    clearTimeout(timers.get(key) as any);
     timers.delete(key);
 
     // Fetch new data in the background
     Promise.resolve(fn(...args))
-      .then((result) => {
+      .then(result => {
         cache.set(key, result);
         setTTL(key, ...args);
       })
-      .catch((error) => {
+      .catch(error => {
         console.error('Error refetching data:', error);
         setTTL(key, ...args);
       });
