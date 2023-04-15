@@ -1,4 +1,4 @@
-# memoize.ts - Enhanced Memoize with Stale-While-Revalidate and Custom Cache
+# memo-swr with cache manager - Enhanced Memoize with Stale-While-Revalidate and Custom Cache
 
 This module provides an enhanced memoization function `memoSwrExtra` that leverages the Stale-While-Revalidate caching strategy for asynchronous functions, with added support for custom cache creation and key generation functions.
 
