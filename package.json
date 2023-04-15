@@ -1,11 +1,15 @@
 {
-  "version": "0.1.3",
+  "version": "0.1.4",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "name": "memo-swr",
   "author": "Kyle Kitlinski",
   "module": "dist/memo-swr.esm.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/K-Kit/memo-swr.git"
+  },
   "files": [
     "dist",
     "src"
