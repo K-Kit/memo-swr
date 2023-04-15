@@ -1,3 +1,3 @@
-export * from './advanced'
-export * from './simple'
-export * from './cache'
+export * from './cache-manager/advanced';
+export * from './simple';
+export * from './simple/cache';
