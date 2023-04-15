@@ -8,12 +8,51 @@ interface MemoizeOptions {
   createCache?: () => Promise<Cache | MultiCache>;
   keyGenerator?: (args: any[]) => string;
 }
-
-export async function memoSwrExtra<T extends any[], R>(
+/**
+ * Memoizes an async function with stale-while-revalidate (SWR) caching strategy using cache-manager.
+ * The function will return cached data if available and then refresh the cache
+ * in the background when it gets stale.
+ *
+ * @template T - The function's argument types.
+ * @template R - The function's return type.
+ * @param {AsyncFunction<T, R>} fn - The async function to memoize.
+ * @param {MemoizeOptions} options - The options for memoization.
+ * @param {number} options.ttl - The time-to-live (TTL) for cache entries in milliseconds.
+ * @param {() => Promise<Cache | MultiCache>} [options.createCache] - A function that returns a cache or multi-cache instance.
+ * @param {(args: any[]) => string} [options.keyGenerator] - A function to generate cache keys based on the function arguments.
+ * @returns {Promise<AsyncFunction<T, R>>} - A promise that resolves to the memoized async function.
+ *
+ * @example
+ * import { memoSwrExtra } from './memoSwrExtra';
+ * import { Cache } from 'cache-manager';
+ *
+ * async function fetchData(id) {
+ *   const response = await fetch(`https://api.example.com/data/${id}`);
+ *   return response.json();
+ * }
+ *
+ * const createCache = async () => {
+ *   return new Cache({ store: 'memory', max: 100, ttl: 60000 });
+ * };
+ *
+ * const keyGenerator = (args) => `data_${args[0]}`;
+ *
+ * (async () => {
+ *   const memoizedFetchData = await memoSwrExtra(fetchData, { ttl: 60000, createCache, keyGenerator });
+ *
+ *   async function main() {
+ *     const data = await memoizedFetchData(1);
+ *     console.log(data);
+ *   }
+ *
+ *   main();
+ * })();
+ */
+export async function swrCacheManager<T extends any[], R>(
   fn: AsyncFunction<T, R>,
   options: MemoizeOptions
 ): Promise<AsyncFunction<T, R>> {
-  const { ttl, createCache, keyGenerator } = options;
+  const { ttl = 10, createCache, keyGenerator } = options;
   const cache =
     (createCache && (await createCache())) ||
     (await caching('memory', {

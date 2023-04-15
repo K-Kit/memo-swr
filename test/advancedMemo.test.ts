@@ -1,10 +1,10 @@
 import { caching, Cache } from 'cache-manager';
-import { memoSwrExtra } from '../src';
+import { swrCacheManager } from '../src';
 
 // const mockFn = vitest.fn(async (x) => x * 2);
 
 const ttl = 3000;
-// const memoizedMockFn = memoSwrExtra(mockFn, { ttl });
+// const memoizedMockFn = swrCacheManager(mockFn, { ttl });
 
 const delay = async (s: number | undefined = ttl + 2000) =>
   new Promise(resolve => setTimeout(resolve, s));
@@ -20,7 +20,7 @@ const createAsyncCache = async (): Promise<Cache> => {
 };
 
 test('should memoize function and serve stale content while refetching', async () => {
-  const memoizedFetchData = await memoSwrExtra(mockFn, {
+  const memoizedFetchData = await swrCacheManager(mockFn, {
     ttl: 1000, // 1 second
     createCache: createAsyncCache,
   });
@@ -48,7 +48,7 @@ test('should memoize function and serve stale content while refetching', async (
 });
 
 test('should refetch data for different arguments', async () => {
-  const memoizedFetchData = await memoSwrExtra(fetchData, {
+  const memoizedFetchData = await swrCacheManager(fetchData, {
     ttl: 1000, // 1 second
     createCache: createAsyncCache,
   });
