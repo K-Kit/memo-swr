@@ -1,3 +1,4 @@
+// @ts-nocheck
 const { memoizeWithStaleWhileRevalidate } = require('../dist');
 // Mock function to test memoization
 const mockFn = jest.fn(x => x * 2);
