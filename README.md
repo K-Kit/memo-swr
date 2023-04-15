@@ -1,9 +1,9 @@
-# memoize.ts - Memoization with Stale-While-Revalidate and Enhanced Customization
+# memo-swr - Memoization with Stale-While-Revalidate and Enhanced Customization
 
 This module provides two memoization functions, `memoSwr` and `memoSwrExtra`, that leverage the Stale-While-Revalidate caching strategy for asynchronous functions. The `memoSwr` function provides basic memoization capabilities, while `memoSwrExtra` enhances the memoization with support for custom cache creation and key generation functions.
 
-- [Simple Cache](./src/simple/readme.md)
-- [Cache Manager](./src/cache-manager/readme.md)
+- [Simple](https://github.com/K-Kit/memo-swr/tree/master/src/simple)
+- [With Cache Manager](https://github.com/K-Kit/memo-swr/tree/master/src/cache-manager)
 
 ## Features
 
