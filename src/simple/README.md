@@ -1,4 +1,4 @@
-# memoize.ts - Memoize with Stale-While-Revalidate
+# memo-swr- Memoize with Stale-While-Revalidate
 
 This module provides a memoization function `memoSwr` that leverages the Stale-While-Revalidate caching strategy for asynchronous functions.
 
