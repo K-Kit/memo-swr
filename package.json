@@ -44,6 +44,8 @@
     }
   ],
   "devDependencies": {
+    "@size-limit/preset-app": "^8.2.4",
+    "size-limit": "^8.2.4",
     "tsdx": "^0.14.1"
   },
   "dependencies": {
