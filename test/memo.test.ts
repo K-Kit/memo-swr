@@ -1,10 +1,10 @@
 // @ts-nocheck
-const { memoizeWithStaleWhileRevalidate } = require('../src');
+import { memoSwr } from '../src';
 // Mock function to test memoization
 const mockFn = jest.fn(x => x * 2);
 
 const ttl = 3;
-const memoizedMockFn = memoizeWithStaleWhileRevalidate(mockFn, ttl);
+const memoizedMockFn = memoSwr(mockFn, ttl);
 
 const delay = async s => new Promise(resolve => setTimeout(resolve, s));
 

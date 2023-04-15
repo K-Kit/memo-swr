@@ -1,8 +1,11 @@
 {
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
+  "name": "memo-swr",
+  "author": "Kyle Kitlinski",
+  "module": "dist/memo-swr.esm.js",
   "files": [
     "dist",
     "src"
@@ -30,9 +33,6 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "memo-swr",
-  "author": "Kyle Kitlinski",
-  "module": "dist/memo-swr.esm.js",
   "size-limit": [
     {
       "path": "dist/memo-swr.cjs.production.min.js",

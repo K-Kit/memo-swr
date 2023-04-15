@@ -8,7 +8,7 @@ interface MemoizeOptions {
   cache?: Cache<any>;
 }
 
-function memoizeWithStaleWhileRevalidate<T extends any[], R>(
+function memoSwr<T extends any[], R>(
   fn: AsyncFunction<T, R>,
   options: MemoizeOptions
 ): AsyncFunction<T, R> {
@@ -54,5 +54,4 @@ function memoizeWithStaleWhileRevalidate<T extends any[], R>(
   };
 }
 
-export { memoizeWithStaleWhileRevalidate };
-export default memoizeWithStaleWhileRevalidate;
+export { memoSwr };
